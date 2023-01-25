@@ -16,20 +16,15 @@ void Widget::paintEvent(QPaintEvent* e)
         
 		for (const auto& it : lines) {
 			painter.drawLine(it);
-            //painter.drawPoint(it);
 		}
         QPen p(Qt::red);
         painter.setPen(p);
-		/* if (startPoint != QPoint{-1, -1}) {
-				 painter.drawLine(QLine(startPoint, endPoint));
-		 }*/
 }
 
 void Widget::mouseMoveEvent(QMouseEvent* e)
 {
         if (startPoint != QPoint{-1, -1} && e->buttons() == Qt::LeftButton) {
                 endPoint = e->pos();
-				//point.push_back(endPoint);
                 lines.push_back({ startPoint, endPoint });
                 startPoint = endPoint;
                 update();
@@ -48,7 +43,6 @@ void Widget::mousePressEvent(QMouseEvent* e)
                 startPoint = e->pos();
         } else {
                 endPoint = e->pos();
-                //point.push_back(endPoint);
 				lines.push_back({ startPoint, endPoint });
 				startPoint = endPoint;
         }
